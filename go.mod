@@ -1,4 +1,4 @@
-module gobit
+module github.com/DK-Lite/gobit
 
 go 1.18
 

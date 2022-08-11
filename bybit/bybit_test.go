@@ -2,12 +2,12 @@ package bybit
 
 import (
 	"fmt"
-	"gobit/config"
 	"log"
 	"os"
 	"testing"
 	"time"
 
+	"github.com/DK-Lite/gobit/config"
 	"github.com/stretchr/testify/assert"
 )
 
