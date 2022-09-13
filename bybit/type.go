@@ -210,12 +210,20 @@ type ReplaceOrderParam struct {
 	Amount float64 `json:"p_r_qty"`
 }
 
+func getType(force bool) string {
+	if force {
+		return "Market"
+	}
+
+	return "Limit"
+}
+
 // NewBettingParam()
-func NewBettingParam(code string, side BettingSide, price float64, amount float64) OrderParam {
+func NewBettingParam(code string, side BettingSide, price float64, amount float64, force bool) OrderParam {
 	return OrderParam{
 		Side:           string(side),
 		Symbol:         code,
-		OrderType:      "Limit",
+		OrderType:      getType(force),
 		Price:          price,
 		Qty:            amount,
 		TimeInForce:    "GoodTillCancel",
@@ -224,11 +232,11 @@ func NewBettingParam(code string, side BettingSide, price float64, amount float6
 	}
 }
 
-func NewClearParam(code string, side ClearSide, price float64, amount float64) OrderParam {
+func NewClearParam(code string, side ClearSide, price float64, amount float64, force bool) OrderParam {
 	return OrderParam{
 		Side:           string(side),
 		Symbol:         code,
-		OrderType:      "Limit",
+		OrderType:      getType(force),
 		Price:          price,
 		Qty:            amount,
 		TimeInForce:    "GoodTillCancel",

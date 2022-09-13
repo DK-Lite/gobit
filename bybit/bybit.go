@@ -16,8 +16,8 @@ type API interface {
 	GetPosition(code string) (float64, error)
 
 	// Active Order with Auth
-	PlaceClear(code string, position ClearSide, price, amount float64) (string, error)
-	PlaceBetting(code string, position BettingSide, price, amount float64) (string, error)
+	PlaceClear(code string, position ClearSide, price, amount float64, force bool) (string, error)
+	PlaceBetting(code string, position BettingSide, price, amount float64, force bool) (string, error)
 	Replace(code, id string, price, amount float64) (string, error)
 	Cancel(code, id string) (*CancelOrder, error)
 	Search(code string) ([]ActiveOrder, error)
@@ -77,16 +77,16 @@ func (bybit BybitClient) GetPosition(code string) (float64, error) {
 	return res[0].Size - res[1].Size, nil
 }
 
-func (bybit BybitClient) PlaceClear(code string, position ClearSide, price, amount float64) (string, error) {
-	res, err := Place(bybit.auth, NewClearParam(code, position, price, amount))
+func (bybit BybitClient) PlaceClear(code string, position ClearSide, price, amount float64, force bool) (string, error) {
+	res, err := Place(bybit.auth, NewClearParam(code, position, price, amount, force))
 	if err != nil {
 		return "", errors.New("Place Error")
 	}
 	return res.UUID, nil
 }
 
-func (bybit BybitClient) PlaceBetting(code string, position BettingSide, price, amount float64) (string, error) {
-	res, err := Place(bybit.auth, NewBettingParam(code, position, price, amount))
+func (bybit BybitClient) PlaceBetting(code string, position BettingSide, price, amount float64, force bool) (string, error) {
+	res, err := Place(bybit.auth, NewBettingParam(code, position, price, amount, force))
 	if err != nil {
 		return "", errors.New("Place Error")
 	}

@@ -5,7 +5,6 @@ import (
 	"log"
 	"os"
 	"testing"
-	"time"
 
 	"github.com/DK-Lite/gobit/config"
 	"github.com/stretchr/testify/assert"
@@ -74,47 +73,47 @@ func TestGetPosition(t *testing.T) {
 	log.Printf("%+v", res)
 }
 
-func TestPlace(t *testing.T) {
-	c := NewClient(envLocal.Bybit.AccessKey, envLocal.Bybit.SecretKey)
-	res, err := c.PlaceBetting("BTCUSDT", BETTING_SHORT, 30000, 0.005)
-	if err != nil {
-		t.Error(err)
-	}
-	tUUID = res
-	log.Printf("%+v", res)
-	time.Sleep(time.Second)
-}
+// func TestPlace(t *testing.T) {
+// 	c := NewClient(envLocal.Bybit.AccessKey, envLocal.Bybit.SecretKey)
+// 	res, err := c.PlaceBetting("BTCUSDT", BETTING_SHORT, 30000, 0.005)
+// 	if err != nil {
+// 		t.Error(err)
+// 	}
+// 	tUUID = res
+// 	log.Printf("%+v", res)
+// 	time.Sleep(time.Second)
+// }
 
-var tUUID string
+// var tUUID string
 
-func TestReplaceOrder(t *testing.T) {
-	c := NewClient(envLocal.Bybit.AccessKey, envLocal.Bybit.SecretKey)
-	res, err := c.Replace("BTCUSDT", tUUID, 31000, 0.005)
-	if err != nil {
-		t.Error(err)
-	}
+// func TestReplaceOrder(t *testing.T) {
+// 	c := NewClient(envLocal.Bybit.AccessKey, envLocal.Bybit.SecretKey)
+// 	res, err := c.Replace("BTCUSDT", tUUID, 31000, 0.005)
+// 	if err != nil {
+// 		t.Error(err)
+// 	}
 
-	log.Printf("%+v", res)
-	time.Sleep(time.Second)
-}
+// 	log.Printf("%+v", res)
+// 	time.Sleep(time.Second)
+// }
 
-func TestSearchOrder(t *testing.T) {
-	c := NewClient(envLocal.Bybit.AccessKey, envLocal.Bybit.SecretKey)
-	res, err := c.Search("BTCUSDT")
-	if err != nil {
-		t.Error(err)
-	}
+// func TestSearchOrder(t *testing.T) {
+// 	c := NewClient(envLocal.Bybit.AccessKey, envLocal.Bybit.SecretKey)
+// 	res, err := c.Search("BTCUSDT")
+// 	if err != nil {
+// 		t.Error(err)
+// 	}
 
-	log.Printf("%+v", res)
-}
+// 	log.Printf("%+v", res)
+// }
 
-func TestCancelOrder(t *testing.T) {
-	c := NewClient(envLocal.Bybit.AccessKey, envLocal.Bybit.SecretKey)
-	res, err := c.Cancel("BTCUSDT", tUUID)
-	if err != nil {
-		t.Error(err)
-	}
+// func TestCancelOrder(t *testing.T) {
+// 	c := NewClient(envLocal.Bybit.AccessKey, envLocal.Bybit.SecretKey)
+// 	res, err := c.Cancel("BTCUSDT", tUUID)
+// 	if err != nil {
+// 		t.Error(err)
+// 	}
 
-	log.Printf("%+v", res)
-	time.Sleep(time.Second)
-}
+// 	log.Printf("%+v", res)
+// 	time.Sleep(time.Second)
+// }
