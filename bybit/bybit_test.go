@@ -32,7 +32,10 @@ func teardown() {
 }
 
 func TestGetServerTime(t *testing.T) {
-	c := NewClient(envLocal.Bybit.AccessKey, envLocal.Bybit.SecretKey)
+	c := NewClient(Options{
+		AccessKey: envLocal.Bybit.AccessKey,
+		SecretKey: envLocal.Bybit.SecretKey,
+	})
 	curTime := c.GetServerTime()
 
 	if curTime < 1655529694 {
@@ -43,7 +46,10 @@ func TestGetServerTime(t *testing.T) {
 }
 
 func TestGetCandles(t *testing.T) {
-	c := NewClient(envLocal.Bybit.AccessKey, envLocal.Bybit.SecretKey)
+	c := NewClient(Options{
+		AccessKey: envLocal.Bybit.AccessKey,
+		SecretKey: envLocal.Bybit.SecretKey,
+	})
 	res, err := c.GetCandle("BTCUSDT", 1, 2)
 	if err != nil {
 		t.Errorf("Expected person, received %v", err)
@@ -56,7 +62,10 @@ func TestGetCandles(t *testing.T) {
 }
 
 func TestGetBalance(t *testing.T) {
-	c := NewClient(envLocal.Bybit.AccessKey, envLocal.Bybit.SecretKey)
+	c := NewClient(Options{
+		AccessKey: envLocal.Bybit.AccessKey,
+		SecretKey: envLocal.Bybit.SecretKey,
+	})
 	res, err := c.GetBalance("USDT")
 	if err != nil {
 		t.Error(err)
@@ -65,7 +74,10 @@ func TestGetBalance(t *testing.T) {
 }
 
 func TestGetPosition(t *testing.T) {
-	c := NewClient(envLocal.Bybit.AccessKey, envLocal.Bybit.SecretKey)
+	c := NewClient(Options{
+		AccessKey: envLocal.Bybit.AccessKey,
+		SecretKey: envLocal.Bybit.SecretKey,
+	})
 	res, err := c.GetPosition("BTCUSDT")
 	if err != nil {
 		t.Error(err)
