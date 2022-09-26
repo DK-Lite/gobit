@@ -1,4 +1,4 @@
-gobit is Golang Package for bybit exchang api
+gobit is golang package for bybit exchang api
 
 ## Installation
 ```cmd
