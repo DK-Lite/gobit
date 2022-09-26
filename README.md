@@ -5,6 +5,22 @@ gobit is Golang Package for bybit exchang api
 go get github.com/DK-Lite/gobit
 ```
 
+## project (go.mod)
+add package
+```cmd
+require (
+ ...
+ github.com/DK-Lite/gobit v1.1.0
+)
+
+```
+
+set go env
+```cmd
+go env -w GOPRIVATE="github.com/DK-Lite/*"
+go mod tidy
+```
+
 ## Get Started (Example)
 ```go
 package main
