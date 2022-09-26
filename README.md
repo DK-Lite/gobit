@@ -1,7 +1,6 @@
 gobit is Golang Package for bybit exchang api
 
 ## Installation
----
 ```cmd
 go get github.com/DK-Lite/gobit
 ```
